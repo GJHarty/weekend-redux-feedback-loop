@@ -10,6 +10,9 @@ function CommentResponse() {
     return (
         <>
             <h1>Any comments you want to leave?</h1>
+            <div>
+                <label>Comments?</label>
+            </div>
             <button className="nextPageBtn" onClick={nextPage}>Next</button>
         </>
     )
