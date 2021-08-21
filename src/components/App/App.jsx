@@ -15,6 +15,7 @@ import SupportedResponse from '../SupportResponse/SupportResponse';
 import UnderstandingResponse from '../UnderstandingResponse/UnderstandingResponse';
 import Review from '../Review/Review';
 import FinalPage from '../FinalPage/FinalPage';
+import Admin from '../Admin/Admin';
 
 function App() {
   return (
@@ -44,6 +45,10 @@ function App() {
 
         <Route exact path='/final'>
           <FinalPage />
+        </Route>
+
+        <Route exact path='/admin'>
+          <Admin />
         </Route>
       </Router>      
     </div>

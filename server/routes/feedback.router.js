@@ -34,4 +34,27 @@ router.post('/', async (req, res) => {
     };
 });
 
+// get data from db and send to admin page
+router.get('/', (req, res) => {
+    const sqlQuery = `SELECT * FROM "feedback" ORDER BY "id" DESC`;
+    pool.query(sqlQuery)
+        .then(dbRes => {
+            res.send(dbRes.rows);
+        })
+        .catch(err => {
+            res.sendStatus(500);
+        });
+});
+
+// delete a feedback response from the admin page
+router.delete('/:id', (req, res) => {
+    pool.query(`DELETE FROM "feedback" WHERE "id"=$1`, [req.params.id])
+        .then(dbRes => {
+            res.sendStatus(200);
+        })
+        .catch(err => {
+            res.sendStatus(500);
+        });
+});
+
 module.exports = router;
