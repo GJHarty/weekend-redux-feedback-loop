@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 function CommentResponse() {
     const history = useHistory();
     const dispatch = useDispatch();
-    const [comment, setComment] = useState('');
+    const [comments, setComment] = useState('');
 
     useEffect(() => {
         dispatch({
@@ -19,8 +19,8 @@ function CommentResponse() {
 
     const submitComment = () => {
         dispatch({
-            type: 'ADD_COMMENT',
-            payload: comment,
+            type: 'ADD_COMMENTS',
+            payload: comments,
         });
         history.push('/review');
     };
@@ -35,7 +35,7 @@ function CommentResponse() {
                         type="text"
                         className="commentInput"
                         placeholder="Write your comment here"
-                        value={comment}
+                        value={comments}
                         onChange={handleCommentChange}
                     />
                 </div>

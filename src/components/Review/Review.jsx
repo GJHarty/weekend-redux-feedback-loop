@@ -1,5 +1,6 @@
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
 
 function Review() {
     const history = useHistory();
@@ -15,18 +16,28 @@ function Review() {
     };
 
     // store all of our answers into our result reducer
+    // const submitFeedback = () => {
+    //     dispatch({
+    //         type: 'ADD_ALL_FEEDBACK',
+    //         payload: {
+    //             feeling: response.feeling,
+    //             understanding: response.understanding,
+    //             support: response.supported,
+    //             comments: response.comment,
+    //         }
+    //     });
+    //     clearData();
+    //     history.push('/final');
+    // };
     const submitFeedback = () => {
-        dispatch({
-            type: 'ADD_ALL_FEEDBACK',
-            payload: {
-                feeling: response.feeling,
-                understanding: response.understanding,
-                support: response.supported,
-                comments: response.comment,
-            }
-        });
-        clearData();
-        history.push('/final');
+        axios.post('/api/feedback', response)
+            .then(response => {
+                clearData();
+                history.push('/final');
+            })
+            .catch(err => {
+                console.error('POST /api/feedback failed', err);
+            });
     };
 
     return (
@@ -34,8 +45,8 @@ function Review() {
             <h1>Review Your Feedback</h1>
             <h2>Feelings: {response.feeling}</h2>
             <h2>Understanding: {response.understanding}</h2>
-            <h2>Support: {response.supported}</h2>
-            <h2>Comments: {response.comment}</h2>
+            <h2>Support: {response.support}</h2>
+            <h2>Comments: {response.comments}</h2>
 
             <button className="submitBtn" onClick={submitFeedback}>Submit</button>
         </>

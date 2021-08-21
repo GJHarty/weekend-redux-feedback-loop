@@ -11,19 +11,19 @@ import { Provider } from 'react-redux';
 const responseReducer = (state = {  
                                     feeling: 0, 
                                     understanding: 0, 
-                                    supported: 0, 
-                                    comment: ''
+                                    support: 0, 
+                                    comments: ''
                                 }, action) => {
     if (action.type === 'ADD_FEELING_ANSWER') {
         return {...state, feeling: Number(action.payload.value)};
     } else if (action.type === 'ADD_UNDERSTANDING_ANSWER') {
         return {...state, understanding: Number(action.payload.value)};
-    } else if (action.type === 'ADD_SUPPORTED_ANSWER') {
-        return {...state, supported: Number(action.payload.value)};
-    } else if (action.type === 'ADD_COMMENT') {
-        return {...state, comment: action.payload};
+    } else if (action.type === 'ADD_SUPPORT_ANSWER') {
+        return {...state, support: Number(action.payload.value)};
+    } else if (action.type === 'ADD_COMMENTS') {
+        return {...state, comments: action.payload};
     } else if (action.type === 'CLEAR_RESPONSE_DATA') {
-        return {feeling: 0, understanding: 0, supported: 0, comment: ''};
+        return {feeling: 0, understanding: 0, support: 0, comments: ''};
     };
     return state;
 };

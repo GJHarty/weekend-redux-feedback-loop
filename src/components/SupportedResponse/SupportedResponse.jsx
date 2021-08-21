@@ -18,9 +18,9 @@ function SupportedResponse() {
         })
     }, []);
 
-    const submitSupportedAnswer = () => {
+    const submitSupportAnswer = () => {
         dispatch({
-            type: 'ADD_SUPPORTED_ANSWER',
+            type: 'ADD_SUPPORT_ANSWER',
             payload: {
                 value: answerValue
             }
@@ -32,10 +32,10 @@ function SupportedResponse() {
         <>
             <h1>How well are you feeling supported today?</h1>
             <div>
-                <label>Supported?</label>
+                <label>Support?</label>
                 <Table />
             </div>
-            <button className="nextPageBtn" onClick={submitSupportedAnswer}>Next</button>
+            <button className="nextPageBtn" onClick={submitSupportAnswer}>Next</button>
         </>
     )
 }
