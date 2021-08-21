@@ -7,7 +7,7 @@ import logger from 'redux-logger';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
-const responseReducer = (state = [], action) => {
+const responseReducer = (state = {}, action) => {
     return state;
 };
 
