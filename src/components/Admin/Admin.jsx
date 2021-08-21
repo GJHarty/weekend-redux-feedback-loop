@@ -1,5 +1,13 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 function Admin() {
     const [feedback, setFeedback] = useState([]);
@@ -55,44 +63,67 @@ function Admin() {
         };
     }; 
 
+    const useStyles = makeStyles({
+        table: {
+          minWidth: 650,
+        },
+    });
+    const classes = useStyles();
+
+    const rows = feedback;
+
+    // const rows = feedback.map(response => 
+    //     {
+    //         response.id, 
+    //         response.feeling, 
+    //         response.understanding, 
+    //         response.support, 
+    //         response.comments, 
+    //         response.flagged, 
+    //         response.date
+    //     });
+
     return (
         <>
             <p>localhost:3000/#/admin</p>
             <h1>Admin</h1>
-            <div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Feeling</th>
-                            <th>Comprehension</th>
-                            <th>Support</th>
-                            <th>Comments</th>
-                            <th>Flag</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {feedback.map(response => (
-                            <tr key={response.id}>
-                                <td>{response.feeling}</td>
-                                <td>{response.understanding}</td>
-                                <td>{response.support}</td>
-                                <td>{response.comments}</td>
-                                <td>
-                                    <button onClick={flagFeedback}>
-                                        {response.flagged ?
-                                            <i id={response.id}>&#x2691;</i> :
-                                            <i id={response.id}>&#x2690;</i>}
-                                    </button>
-                                </td>
-                                <td>
-                                    <button className="deleteBtn" id={response.id} onClick={deleteFromDb}>Delete</button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+            <TableContainer component={Paper}>
+                <Table className={classes.table} aria-label="simple table">
+                    <TableHead>
+                    <TableRow>
+                        <TableCell>ID</TableCell>
+                        <TableCell align="right">Feeling</TableCell>
+                        <TableCell align="right">Comprehension</TableCell>
+                        <TableCell align="right">Support</TableCell>
+                        <TableCell align="right">Comments</TableCell>
+                        <TableCell align="right">Flag</TableCell>
+                        <TableCell align="right">Delete</TableCell>
+                    </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    {rows.map((row) => (
+                        <TableRow key={row.id}>
+                            <TableCell component="th" scope="row">{row.id}
+                            </TableCell>
+                            <TableCell align="right">{row.feeling}</TableCell>
+                            <TableCell align="right">{row.understanding}</TableCell>
+                            <TableCell align="right">{row.support}</TableCell>
+                            <TableCell align="right">{row.comments}</TableCell>
+                            <TableCell align="right">
+                                <button onClick={flagFeedback}>
+                                    {row.flagged ?
+                                        <i id={row.id}>&#x2691;</i> :
+                                        <i id={row.id}>&#x2690;</i>}
+                                </button>
+                            </TableCell>
+                            <TableCell align="right">
+                                <button className="deleteBtn" id={row.id} onClick={deleteFromDb}>Delete</button>
+                            </TableCell>
+                        </TableRow>
+                    ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
         </>
     );
 };
