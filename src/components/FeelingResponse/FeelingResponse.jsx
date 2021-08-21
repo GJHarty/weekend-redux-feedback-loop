@@ -8,6 +8,10 @@ function FeelingResponse() {
     const answerValue = useSelector(store => store.tableAnswerReducer);
 
     const submitFeelingAnswer = () => {
+        if (answerValue === 0 || answerValue === null) {
+            alert('Please make a selection before continuing to the next page.');
+            return;
+        }
         dispatch({
             type: 'ADD_FEELING_ANSWER',
             payload: {

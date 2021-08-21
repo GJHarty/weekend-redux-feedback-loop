@@ -41,7 +41,6 @@ const tableAnswerReducer = (state = 0, action) => {
 const storeInstance = createStore(
     combineReducers({
         responseReducer,
-        resultReducer,
         tableAnswerReducer,
     }),
     applyMiddleware(logger),

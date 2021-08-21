@@ -11,7 +11,6 @@ function UnderstandingResponse() {
     // on every new page load we need to clear the value of the table
     // this will prevent people from simply using one answer for
     // each component
-    // Can remove once input validation is added
     useEffect(() => {
         dispatch({
             type: 'RESET_TABLE_VALUE',
@@ -19,6 +18,10 @@ function UnderstandingResponse() {
     }, []);
 
     const submitUnderstandingAnswer = () => {
+        if (answerValue === 0 || answerValue === null) {
+            alert('Please make a selection before continuing to the next page.');
+            return;
+        }
         dispatch({
             type: 'ADD_UNDERSTANDING_ANSWER',
             payload: {

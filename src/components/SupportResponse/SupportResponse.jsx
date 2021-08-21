@@ -19,6 +19,10 @@ function SupportedResponse() {
     }, []);
 
     const submitSupportAnswer = () => {
+        if (answerValue === 0 || answerValue === null) {
+            alert('Please make a selection before continuing to the next page.');
+            return;
+        }
         dispatch({
             type: 'ADD_SUPPORT_ANSWER',
             payload: {

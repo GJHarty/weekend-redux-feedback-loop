@@ -11,7 +11,7 @@ import {
 import Header from '../Header/Header';
 import FeelingResponse from '../FeelingResponse/FeelingResponse';
 import CommentResponse from '../CommentResponse/CommentResponse';
-import SupportedResponse from '../SupportedResponse/SupportedResponse';
+import SupportedResponse from '../SupportResponse/SupportResponse';
 import UnderstandingResponse from '../UnderstandingResponse/UnderstandingResponse';
 import Review from '../Review/Review';
 import FinalPage from '../FinalPage/FinalPage';
