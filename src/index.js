@@ -28,6 +28,9 @@ const responseReducer = (state = {
 
 // store responses in an array so we can iterate through and display on the admin screen
 const resultReducer = (state = [], action) => {
+    if (action.type === 'ADD_ALL_FEEDBACK') {
+        return [...state, action.payload];
+    };
     return state;
 };
 
