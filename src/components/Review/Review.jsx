@@ -6,6 +6,14 @@ function Review() {
     const dispatch = useDispatch();
     const response = useSelector(store => store.responseReducer);
 
+    // we want to be able to clear out our response reducer once 
+    // all of the data has been submitted
+    const clearData = () => {
+        dispatch({
+            type: "CLEAR_RESPONSE_DATA"
+        });
+    };
+
     // store all of our answers into our result reducer
     const submitFeedback = () => {
         dispatch({
@@ -17,6 +25,7 @@ function Review() {
                 comments: response.comment,
             }
         });
+        clearData();
         history.push('/final');
     };
 

@@ -22,6 +22,8 @@ const responseReducer = (state = {
         return {...state, supported: Number(action.payload.value)};
     } else if (action.type === 'ADD_COMMENT') {
         return {...state, comment: action.payload};
+    } else if (action.type === 'CLEAR_RESPONSE_DATA') {
+        return {feeling: 0, understanding: 0, supported: 0, comment: ''};
     };
     return state;
 };

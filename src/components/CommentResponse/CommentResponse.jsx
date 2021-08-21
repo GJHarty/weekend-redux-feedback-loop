@@ -1,11 +1,17 @@
 import { useHistory } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 function CommentResponse() {
     const history = useHistory();
     const dispatch = useDispatch();
     const [comment, setComment] = useState('');
+
+    useEffect(() => {
+        dispatch({
+            type: 'RESET_TABLE_VALUE'
+        })
+    }, []);
 
     const handleCommentChange = (event) => {
         setComment(event.target.value);
