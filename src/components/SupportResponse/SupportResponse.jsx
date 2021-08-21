@@ -32,6 +32,10 @@ function SupportedResponse() {
         history.push('/comment');
     };
 
+    const goBack = () => {
+        history.goBack();
+    };
+
     return (
         <>
             <h1>How well are you feeling supported today?</h1>
@@ -39,6 +43,7 @@ function SupportedResponse() {
                 <label>Support?</label>
                 <Table />
             </div>
+            <button className="backBtn" onClick={goBack}>Back</button>
             <button className="nextPageBtn" onClick={submitSupportAnswer}>Next</button>
         </>
     )

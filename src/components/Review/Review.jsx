@@ -26,6 +26,10 @@ function Review() {
             });
     };
 
+    const goBack = () => {
+        history.goBack();
+    };
+
     return (
         <>
             <h1>Review Your Feedback</h1>
@@ -34,6 +38,7 @@ function Review() {
             <h2>Support: {response.support}</h2>
             <h2>Comments: {response.comments}</h2>
 
+            <button className="backBtn" onClick={goBack}>Back</button>
             <button className="submitBtn" onClick={submitFeedback}>Submit</button>
         </>
     )

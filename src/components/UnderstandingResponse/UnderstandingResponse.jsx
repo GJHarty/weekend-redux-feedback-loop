@@ -31,6 +31,10 @@ function UnderstandingResponse() {
         history.push('/supported');
     };
 
+    const goBack = () => {
+        history.goBack();
+    };
+
     return (
         <>
             <h1>How well are you understanding the content?</h1>
@@ -38,7 +42,8 @@ function UnderstandingResponse() {
                 <label>Understanding?</label>
                 <Table />
             </div>
-            <button className="nextPageBtn" onClick={submitUnderstandingAnswer}>Next</button>
+            <button className="backBtn" onClick={goBack}>Back</button>
+            <button className="nextPageBtn" onClick={submitUnderstandingAnswer}>Next</button>  
         </>
     )
 }

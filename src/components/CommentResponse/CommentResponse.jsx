@@ -25,6 +25,11 @@ function CommentResponse() {
         history.push('/review');
     };
 
+    const goBack = () => {
+        history.goBack();
+    };
+
+
     return (
         <>
             <h1>Any comments you want to leave?</h1>
@@ -41,6 +46,7 @@ function CommentResponse() {
                 </div>
                 
             </div>
+            <button className="backBtn" onClick={goBack}>Back</button>
             <button className="nextPageBtn" onClick={submitComment}>Next</button>
         </>
     )
