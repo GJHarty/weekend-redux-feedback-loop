@@ -1,3 +1,8 @@
+/* 
+This saves a ton of space in each component. Each radio button will select a value 
+which we can send over to our reducer in order to re-use in each component
+*/
+
 import { useDispatch } from 'react-redux';
 
 function Table({
