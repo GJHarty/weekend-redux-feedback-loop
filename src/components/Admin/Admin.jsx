@@ -32,9 +32,9 @@ function Admin() {
     };
 
     const flagFeedback = (event) => {
-        for (let row of feedback) {
-            if (row.id === Number(event.target.id)) {
-                if (!row.flagged) {
+        for (let row of feedback) { // looping through our feedback in order to make sure our id's match
+            if (row.id === Number(event.target.id)) { // id check here
+                if (!row.flagged) { // here is where we start our database toggle
                     axios.put(`/api/feedback/${event.target.id}`, {flagged: true})
                         .then(response => {
                             getFeedbackData();
@@ -50,9 +50,9 @@ function Admin() {
                         .catch(err => {
                             console.error(`PUT /api/feedback/${event.target.id}`, err);
                         });
-                }
-            }
-        }
+                };
+            };
+        };
     }; 
 
     return (
