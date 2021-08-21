@@ -8,6 +8,10 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import FlagOutlinedIcon from '@material-ui/icons/FlagOutlined';
+import FlagIcon from '@material-ui/icons/Flag';
+import Button from '@material-ui/core/Button';
+import { IconButton } from '@material-ui/core';
 
 function Admin() {
     const [feedback, setFeedback] = useState([]);
@@ -72,17 +76,6 @@ function Admin() {
 
     const rows = feedback;
 
-    // const rows = feedback.map(response => 
-    //     {
-    //         response.id, 
-    //         response.feeling, 
-    //         response.understanding, 
-    //         response.support, 
-    //         response.comments, 
-    //         response.flagged, 
-    //         response.date
-    //     });
-
     return (
         <>
             <p>localhost:3000/#/admin</p>
@@ -92,32 +85,36 @@ function Admin() {
                     <TableHead>
                     <TableRow>
                         <TableCell>ID</TableCell>
-                        <TableCell align="right">Feeling</TableCell>
-                        <TableCell align="right">Comprehension</TableCell>
-                        <TableCell align="right">Support</TableCell>
-                        <TableCell align="right">Comments</TableCell>
-                        <TableCell align="right">Flag</TableCell>
-                        <TableCell align="right">Delete</TableCell>
+                        <TableCell align="center">Feeling</TableCell>
+                        <TableCell align="center">Comprehension</TableCell>
+                        <TableCell align="center">Support</TableCell>
+                        <TableCell align="center">Comments</TableCell>
+                        <TableCell align="center">Flag</TableCell>
+                        <TableCell align="center">Delete</TableCell>
                     </TableRow>
                     </TableHead>
                     <TableBody>
                     {rows.map((row) => (
-                        <TableRow key={row.id}>
+                        <TableRow key={row.id} >
                             <TableCell component="th" scope="row">{row.id}
                             </TableCell>
-                            <TableCell align="right">{row.feeling}</TableCell>
-                            <TableCell align="right">{row.understanding}</TableCell>
-                            <TableCell align="right">{row.support}</TableCell>
-                            <TableCell align="right">{row.comments}</TableCell>
-                            <TableCell align="right">
-                                <button onClick={flagFeedback}>
-                                    {row.flagged ?
-                                        <i id={row.id}>&#x2691;</i> :
-                                        <i id={row.id}>&#x2690;</i>}
-                                </button>
+                            <TableCell align="center">{row.feeling}</TableCell>
+                            <TableCell align="center">{row.understanding}</TableCell>
+                            <TableCell align="center">{row.support}</TableCell>
+                            <TableCell align="center">{row.comments}</TableCell>
+                            <TableCell align="center">
+                                    {row.flagged ? 
+                                        <IconButton variant="contained" color="secondary" id={row.id} onClick={flagFeedback}>
+                                            <FlagIcon />
+                                        </IconButton> :
+                                        <IconButton variant="contained" color="primary" id={row.id} onClick={flagFeedback}>
+                                            <FlagOutlinedIcon />
+                                        </IconButton>
+                                    }
+                                
                             </TableCell>
-                            <TableCell align="right">
-                                <button className="deleteBtn" id={row.id} onClick={deleteFromDb}>Delete</button>
+                            <TableCell align="center">
+                                <Button variant="contained" color="secondary" className="deleteBtn" id={row.id} onClick={deleteFromDb}>Delete</Button>
                             </TableCell>
                         </TableRow>
                     ))}
