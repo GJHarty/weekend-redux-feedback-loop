@@ -9,3 +9,7 @@ body {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.commentInput {
+  margin: 10px 0px 10px;
+}

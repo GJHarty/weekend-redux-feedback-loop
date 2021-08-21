@@ -12,6 +12,13 @@ function CommentResponse() {
             <h1>Any comments you want to leave?</h1>
             <div>
                 <label>Comments?</label>
+                <div>
+                    <input
+                        type="text"
+                        className="commentInput"
+                    />
+                </div>
+                
             </div>
             <button className="nextPageBtn" onClick={nextPage}>Next</button>
         </>

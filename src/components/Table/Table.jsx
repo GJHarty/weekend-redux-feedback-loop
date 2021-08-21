@@ -1,7 +1,22 @@
-function Table() {
+import { useDispatch } from 'react-redux';
+
+function Table({
+    submitFeelingAnswer
+}) {
+    const dispatch = useDispatch();
+
+    // I need to send the value of this table to the reducer
+    const onChangeValue = (event) => {
+        console.log(event.target.value);
+        dispatch({
+            type: 'SUBMIT_TABLE_VALUE',
+            payload: event.target.value,
+        });
+    }
+
     return (
         <>
-            <div>
+            <div onChange={onChangeValue}>
                 <table className="table">
                     <thead>
                         <tr>

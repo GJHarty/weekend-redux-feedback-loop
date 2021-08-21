@@ -1,10 +1,19 @@
 import { useHistory } from 'react-router-dom';
 import Table from '../Table/Table';
+import { useSelector, useDispatch } from 'react-redux';
 
 function FeelingResponse() {
     const history = useHistory();
+    const dispatch = useDispatch();
+    const answerValue = useSelector(store => store.tableAnswerReducer);
 
-    const nextPage = () => {
+    const submitFeelingAnswer = () => {
+        dispatch({
+            type: 'ADD_FEELING_ANSWER',
+            payload: {
+                value: answerValue
+            }
+        });
         history.push('/understanding');
     };
 
@@ -13,9 +22,11 @@ function FeelingResponse() {
             <h1>How are you feeling today?</h1>
             <div>
                 <label>Feeling?</label>
-                <Table />
+                <Table 
+                    submitFeelingAnswer={submitFeelingAnswer}
+                />
             </div>
-            <button className="nextPageBtn" onClick={nextPage}>Next</button>
+            <button className="nextPageBtn" onClick={submitFeelingAnswer}>Next</button>
         </>
     );
 };
