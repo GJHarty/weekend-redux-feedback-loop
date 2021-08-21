@@ -57,4 +57,27 @@ router.delete('/:id', (req, res) => {
         });
 });
 
+// set flagged status of feedback 
+router.put('/:id', (req, res) => {
+    let flagged = req.body.flagged;
+    console.log('router flagged?', flagged);
+    if (flagged) {
+        pool.query(`UPDATE "feedback" SET "flagged" = TRUE WHERE "id"=$1`, [req.params.id])
+            .then(dbRes => {
+                res.sendStatus(200);
+            })
+            .catch(err => {
+                res.sendStatus(500);
+            });
+    } else {
+        pool.query(`UPDATE "feedback" SET "flagged" = FALSE WHERE "id"=$1`, [req.params.id])
+            .then(dbRes => {
+                res.sendStatus(200);
+            })
+            .catch(err => {
+                res.sendStatus(500);
+            });
+    }
+});
+
 module.exports = router;

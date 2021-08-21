@@ -12,7 +12,8 @@ const responseReducer = (state = {
                                     feeling: 0, 
                                     understanding: 0, 
                                     support: 0, 
-                                    comments: ''
+                                    comments: '',
+                                    flagged: false,
                                 }, action) => {
     if (action.type === 'ADD_FEELING_ANSWER') {
         return {...state, feeling: Number(action.payload.value)};

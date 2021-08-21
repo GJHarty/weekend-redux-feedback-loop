@@ -31,6 +31,30 @@ function Admin() {
             });
     };
 
+    const flagFeedback = (event) => {
+        for (let row of feedback) {
+            if (row.id === Number(event.target.id)) {
+                if (!row.flagged) {
+                    axios.put(`/api/feedback/${event.target.id}`, {flagged: true})
+                        .then(response => {
+                            getFeedbackData();
+                        })
+                        .catch(err => {
+                            console.error(`PUT /api/feedback/${event.target.id}`, err);
+                        });
+                } else {
+                    axios.put(`/api/feedback/${event.target.id}`, {flagged: false})
+                        .then(response => {
+                            getFeedbackData();
+                        })
+                        .catch(err => {
+                            console.error(`PUT /api/feedback/${event.target.id}`, err);
+                        });
+                }
+            }
+        }
+    }; 
+
     return (
         <>
             <p>localhost:3000/#/admin</p>
@@ -43,6 +67,7 @@ function Admin() {
                             <th>Comprehension</th>
                             <th>Support</th>
                             <th>Comments</th>
+                            <th>Flag</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -53,6 +78,13 @@ function Admin() {
                                 <td>{response.understanding}</td>
                                 <td>{response.support}</td>
                                 <td>{response.comments}</td>
+                                <td>
+                                    <button onClick={flagFeedback}>
+                                        {response.flagged ?
+                                            <i id={response.id}>&#x2691;</i> :
+                                            <i id={response.id}>&#x2690;</i>}
+                                    </button>
+                                </td>
                                 <td>
                                     <button className="deleteBtn" id={response.id} onClick={deleteFromDb}>Delete</button>
                                 </td>
