@@ -1,8 +1,15 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
-import Header from '../Header/Header';
 import { useSelector } from 'react-redux';
+
+// import components:
+import Header from '../Header/Header';
+import FeelingResponse from '../FeelingResponse/FeelingResponse';
+import CommentResponse from '../CommentResponse/CommentResponse';
+import SupportedResponse from '../SupportedResponse/SupportedResponse';
+import UnderstandingResponse from '../UnderstandingResponse/UnderstandingResponse';
+import Review from '../Review/Review';
 
 function App() {
   // just setting these up here to make sure the store instance
@@ -15,7 +22,15 @@ function App() {
 
   return (
     <div className='App'>
+      {/* 
+        testing components 
+      */}
       <Header />
+      <FeelingResponse />
+      <UnderstandingResponse />
+      <SupportedResponse />
+      <CommentResponse />
+      <Review />
     </div>
   );
 }
