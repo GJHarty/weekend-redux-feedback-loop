@@ -14,21 +14,7 @@ function Review() {
             type: "CLEAR_RESPONSE_DATA"
         });
     };
-
-    // store all of our answers into our result reducer
-    // const submitFeedback = () => {
-    //     dispatch({
-    //         type: 'ADD_ALL_FEEDBACK',
-    //         payload: {
-    //             feeling: response.feeling,
-    //             understanding: response.understanding,
-    //             support: response.supported,
-    //             comments: response.comment,
-    //         }
-    //     });
-    //     clearData();
-    //     history.push('/final');
-    // };
+    
     const submitFeedback = () => {
         axios.post('/api/feedback', response)
             .then(response => {

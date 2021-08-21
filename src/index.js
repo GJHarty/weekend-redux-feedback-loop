@@ -28,14 +28,6 @@ const responseReducer = (state = {
     return state;
 };
 
-// store responses in an array so we can iterate through and display on the admin screen
-const resultReducer = (state = [], action) => {
-    if (action.type === 'ADD_ALL_FEEDBACK') {
-        return [...state, action.payload];
-    };
-    return state;
-};
-
 // This makes it possible to seperate out the table component and still retrieve values
 const tableAnswerReducer = (state = 0, action) => {
     if (action.type === 'SUBMIT_TABLE_VALUE') {
