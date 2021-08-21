@@ -4,15 +4,22 @@ which we can send over to our reducer in order to re-use in each component
 */
 
 import { useDispatch } from 'react-redux';
+import React from 'react';
 
-function Table({
-    submitFeelingAnswer
-}) {
+// material-ui imports
+import { Radio, RadioGroup, FormControl, FormLabel, FormControlLabel } from '@material-ui/core';
+
+
+function Table() {
     const dispatch = useDispatch();
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    };
 
     // I need to send the value of this table to the reducer
     const onChangeValue = (event) => {
-        console.log(event.target.value);
         dispatch({
             type: 'SUBMIT_TABLE_VALUE',
             payload: event.target.value,
@@ -22,36 +29,15 @@ function Table({
     return (
         <>
             <div onChange={onChangeValue}>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>1</th>
-                            <th>2</th>
-                            <th>3</th>
-                            <th>4</th>
-                            <th>5</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <input type="radio" value="1" name="feeling" />
-                            </td>
-                            <td>
-                                <input type="radio" value="2" name="feeling" />
-                            </td>
-                            <td>
-                                <input type="radio" value="3" name="feeling" />
-                            </td>
-                            <td>
-                                <input type="radio" value="4" name="feeling" />
-                            </td>
-                            <td>
-                                <input type="radio" value="5" name="feeling" />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>  
+                <FormControl component="fieldset">
+                    <RadioGroup row aria-label="feeling" name="feeling1" value={value} onChange={handleChange}>
+                        <FormControlLabel value="1" control={<Radio />} label="1" labelPlacement="top"/>
+                        <FormControlLabel value="2" control={<Radio />} label="2" labelPlacement="top"/>
+                        <FormControlLabel value="3" control={<Radio />} label="3" labelPlacement="top"/>
+                        <FormControlLabel value="4" control={<Radio />} label="4" labelPlacement="top"/>
+                        <FormControlLabel value="5" control={<Radio />} label="5" labelPlacement="top"/>
+                    </RadioGroup>
+                </FormControl> 
             </div>
         </>
     )

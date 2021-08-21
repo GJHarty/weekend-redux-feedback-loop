@@ -2,6 +2,7 @@ import { useHistory } from 'react-router-dom';
 import Table from '../Table/Table';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import Button from '@material-ui/core/Button';
 
 function UnderstandingResponse() {
     const history = useHistory();
@@ -42,8 +43,8 @@ function UnderstandingResponse() {
                 <label>Understanding?</label>
                 <Table />
             </div>
-            <button className="backBtn" onClick={goBack}>Back</button>
-            <button className="nextPageBtn" onClick={submitUnderstandingAnswer}>Next</button>  
+            <Button variant="contained" color="default" className="backBtn" onClick={goBack}>Back</Button>
+            <Button variant="contained" color="primary" className="nextPageBtn" onClick={submitUnderstandingAnswer}>Next</Button>  
         </>
     )
 }

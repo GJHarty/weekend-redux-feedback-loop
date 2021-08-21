@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 function FinalPage() {
     const history = useHistory();
@@ -10,7 +11,7 @@ function FinalPage() {
     return (
         <>
             <h1>Feedback Submitted</h1>
-            <button className="newFeedbackBtn" onClick={nextPage}>Leave New Feedback</button>
+            <Button variant="contained" color="primary" className="newFeedbackBtn" onClick={nextPage}>Leave New Feedback</Button>
         </>
     )
 }

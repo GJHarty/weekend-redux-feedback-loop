@@ -1,6 +1,7 @@
 import { useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import Button from '@material-ui/core/Button';
 
 function CommentResponse() {
     const history = useHistory();
@@ -46,8 +47,8 @@ function CommentResponse() {
                 </div>
                 
             </div>
-            <button className="backBtn" onClick={goBack}>Back</button>
-            <button className="nextPageBtn" onClick={submitComment}>Next</button>
+            <Button variant="contained" color="default" className="backBtn" onClick={goBack}>Back</Button>
+            <Button variant="contained" color="primary" className="nextPageBtn" onClick={submitComment}>Next</Button>
         </>
     )
 }

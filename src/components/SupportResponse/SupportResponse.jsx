@@ -2,6 +2,7 @@ import { useHistory } from 'react-router-dom';
 import Table from '../Table/Table';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import Button from '@material-ui/core/Button';
 
 function SupportedResponse() {
     const history = useHistory();
@@ -43,8 +44,8 @@ function SupportedResponse() {
                 <label>Support?</label>
                 <Table />
             </div>
-            <button className="backBtn" onClick={goBack}>Back</button>
-            <button className="nextPageBtn" onClick={submitSupportAnswer}>Next</button>
+            <Button variant="contained" color="default" className="backBtn" onClick={goBack}>Back</Button>
+            <Button variant="contained" color="primary" className="nextPageBtn" onClick={submitSupportAnswer}>Next</Button>
         </>
     )
 }

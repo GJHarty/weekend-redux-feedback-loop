@@ -1,6 +1,7 @@
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import Button from '@material-ui/core/Button';
 
 function Review() {
     const history = useHistory();
@@ -38,8 +39,8 @@ function Review() {
             <h2>Support: {response.support}</h2>
             <h2>Comments: {response.comments}</h2>
 
-            <button className="backBtn" onClick={goBack}>Back</button>
-            <button className="submitBtn" onClick={submitFeedback}>Submit</button>
+            <Button variant="contained" color="default" className="backBtn" onClick={goBack}>Back</Button>
+            <Button variant="contained" color="primary" className="submitBtn" onClick={submitFeedback}>Submit</Button>
         </>
     )
 }

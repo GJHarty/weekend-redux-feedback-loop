@@ -1,6 +1,7 @@
 import { useHistory } from 'react-router-dom';
 import Table from '../Table/Table';
 import { useSelector, useDispatch } from 'react-redux';
+import Button from '@material-ui/core/Button';
 
 function FeelingResponse() {
     const history = useHistory();
@@ -30,7 +31,7 @@ function FeelingResponse() {
                     submitFeelingAnswer={submitFeelingAnswer}
                 />
             </div>
-            <button className="nextPageBtn" onClick={submitFeelingAnswer}>Next</button>
+            <Button variant="contained" color="primary" className="nextPageBtn" onClick={submitFeelingAnswer}>Next</Button>
         </>
     );
 };
