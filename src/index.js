@@ -25,7 +25,7 @@ const responseReducer = (state = {
         return {...state, comments: action.payload};
     } else if (action.type === 'CLEAR_RESPONSE_DATA') {
         return {feeling: 0, understanding: 0, support: 0, comments: ''};
-    };
+    }
     return state;
 };
 
@@ -35,7 +35,7 @@ const tableAnswerReducer = (state = 0, action) => {
         return state = action.payload;
     } else if (action.type === 'RESET_TABLE_VALUE') {
         return state = 0;
-    };
+    }
     return state;
 };
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
@@ -19,6 +20,7 @@ function Review() {
     const submitFeedback = () => {
         axios.post('/api/feedback', response)
             .then(response => {
+                console.log(response);
                 clearData();
                 history.push('/final');
             })
