@@ -1,6 +1,10 @@
 {
   "name": "react-reflection-board",
   "version": "0.1.0",
+  "engines": {
+    "node": "14.17.3"
+  },
+  "main": "App.jsx",
   "private": true,
   "proxy": "http://localhost:5000",
   "dependencies": {
