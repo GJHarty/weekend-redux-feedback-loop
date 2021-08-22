@@ -33,8 +33,7 @@ function Admin() {
     };
 
     const deleteFromDb = (event) => {
-        console.log('delete');
-        axios.delete(`/api/feedback/${event.target.id}`)
+        axios.delete(`/api/feedback/${Number(event.target.id)}`)
             .then(response => {
                 getFeedbackData();
             })
@@ -111,7 +110,6 @@ function Admin() {
                                             <FlagOutlinedIcon />
                                         </IconButton>
                                     }
-                                
                             </TableCell>
                             <TableCell align="center">
                                 <Button variant="contained" color="secondary" className="deleteBtn" id={row.id} onClick={deleteFromDb}>Delete</Button>
