@@ -1,3 +1,4 @@
+import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
@@ -35,6 +36,7 @@ function Admin() {
     const deleteFromDb = (event) => {
         axios.delete(`/api/feedback/${Number(event.target.id)}`)
             .then(response => {
+                console.log(response);
                 getFeedbackData();
             })
             .catch(err => {
@@ -48,6 +50,7 @@ function Admin() {
                 if (!row.flagged) { // here is where we start our database toggle
                     axios.put(`/api/feedback/${event.target.id}`, {flagged: true})
                         .then(response => {
+                            console.log(response);
                             getFeedbackData();
                         })
                         .catch(err => {
@@ -56,14 +59,15 @@ function Admin() {
                 } else {
                     axios.put(`/api/feedback/${event.target.id}`, {flagged: false})
                         .then(response => {
+                            console.log(response);
                             getFeedbackData();
                         })
                         .catch(err => {
                             console.error(`PUT /api/feedback/${event.target.id}`, err);
                         });
-                };
-            };
-        };
+                }
+            }
+        }
     }; 
 
     const useStyles = makeStyles({
@@ -121,6 +125,6 @@ function Admin() {
             </TableContainer>
         </>
     );
-};
+}
 
 export default Admin;

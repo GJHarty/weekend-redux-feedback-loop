@@ -3,6 +3,7 @@ import Table from '../Table/Table';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import Button from '@material-ui/core/Button';
+import React from 'react';
 
 function UnderstandingResponse() {
     const history = useHistory();

@@ -1,7 +1,5 @@
 import React from 'react';
-import axios from 'axios';
 import './App.css';
-import { useSelector } from 'react-redux';
 import {
   HashRouter as Router,
   Route,

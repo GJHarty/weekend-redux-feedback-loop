@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import React from 'react';
 
 // material-ui imports
-import { Radio, RadioGroup, FormControl, FormLabel, FormControlLabel } from '@material-ui/core';
+import { Radio, RadioGroup, FormControl, FormControlLabel } from '@material-ui/core';
 
 
 function Table() {

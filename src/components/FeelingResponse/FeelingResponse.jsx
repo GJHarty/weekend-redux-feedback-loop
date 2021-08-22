@@ -1,3 +1,4 @@
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Table from '../Table/Table';
 import { useSelector, useDispatch } from 'react-redux';
@@ -34,6 +35,6 @@ function FeelingResponse() {
             <Button variant="contained" color="primary" className="nextPageBtn" onClick={submitFeelingAnswer}>Next</Button>
         </>
     );
-};
+}
 
 export default FeelingResponse;
