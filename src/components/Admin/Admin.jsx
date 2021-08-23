@@ -33,37 +33,37 @@ function Admin() {
             });
     };
 
-    const deleteFromDb = (event) => {
-        axios.delete(`/api/feedback/${Number(event.target.id)}`)
+    const deleteFromDb = (itemId) => {
+        axios.delete(`/api/feedback/${itemId}`)
             .then(response => {
                 console.log(response);
                 getFeedbackData();
             })
             .catch(err => {
-                console.error(`DELETE /api/feedback/${event.target.id} failed`, err);
+                console.error(`DELETE /api/feedback/${itemId} failed`, err);
             });
     };
 
-    const flagFeedback = (event) => {
+    const flagFeedback = (itemId) => {
         for (let row of feedback) { // looping through our feedback in order to make sure our id's match
-            if (row.id === Number(event.target.id)) { // id check here
+            if (row.id === itemId) { // id check here
                 if (!row.flagged) { // here is where we start our database toggle
-                    axios.put(`/api/feedback/${event.target.id}`, {flagged: true})
+                    axios.put(`/api/feedback/${itemId}`, {flagged: true})
                         .then(response => {
                             console.log(response);
                             getFeedbackData();
                         })
                         .catch(err => {
-                            console.error(`PUT /api/feedback/${event.target.id}`, err);
+                            console.error(`PUT /api/feedback/${itemId}`, err);
                         });
                 } else {
-                    axios.put(`/api/feedback/${event.target.id}`, {flagged: false})
+                    axios.put(`/api/feedback/${itemId}`, {flagged: false})
                         .then(response => {
                             console.log(response);
                             getFeedbackData();
                         })
                         .catch(err => {
-                            console.error(`PUT /api/feedback/${event.target.id}`, err);
+                            console.error(`PUT /api/feedback/${itemId}`, err);
                         });
                 }
             }
@@ -107,16 +107,16 @@ function Admin() {
                             <TableCell align="center">{row.comments}</TableCell>
                             <TableCell align="center">
                                     {row.flagged ? 
-                                        <IconButton variant="contained" color="secondary" id={row.id} onClick={flagFeedback}>
+                                        <IconButton variant="contained" color="secondary" onClick={() => flagFeedback(row.id)}>
                                             <FlagIcon />
                                         </IconButton> :
-                                        <IconButton variant="contained" color="primary" id={row.id} onClick={flagFeedback}>
+                                        <IconButton variant="contained" color="primary" id={row.id} onClick={() => flagFeedback(row.id)}>
                                             <FlagOutlinedIcon />
                                         </IconButton>
                                     }
                             </TableCell>
                             <TableCell align="center">
-                                <Button variant="contained" color="secondary" className="deleteBtn" id={row.id} onClick={deleteFromDb}>Delete</Button>
+                                <Button variant="contained" color="secondary" className="deleteBtn" onClick={() => deleteFromDb(row.id)}>Delete</Button>
                             </TableCell>
                         </TableRow>
                     ))}
